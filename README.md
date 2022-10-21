@@ -12,5 +12,7 @@ Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz   2.40 GHz
 16Gb RAM
 ```
 
+63.91 xdds per second
+
 <img src="docs/measurements.png" width="600" />
 
