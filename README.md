@@ -16,3 +16,7 @@ Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz   2.40 GHz
 
 <img src="docs/measurements.png" width="600" />
 
+61 xdds per second
+
+<img src="docs/uwp_measurements.png" width="600" />
+
