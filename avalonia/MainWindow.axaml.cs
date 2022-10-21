@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Avalonia.Media.Immutable;
 using Avalonia.Threading;
 using System;
 using System.Diagnostics;
@@ -48,16 +49,15 @@ namespace xdds
         {
             var random = Random.Shared;
             while (count < 5000)
-            {                
+            {
+                Color color = new Color(255, (byte)random.Next(256), (byte)random.Next(256), (byte)random.Next(256));
+                var brush = new ImmutableSolidColorBrush(color);
                 Dispatcher.UIThread.Post(() =>
                 {
-                    Color color = new Color(255, (byte)random.Next(256), (byte)random.Next(256), (byte)random.Next(256));
-                    var brush = new SolidColorBrush(color);
                     var label = new Label
                     {
                         Content = "XDD?",
                         Foreground = brush,
-                        Tag = color,
                         //Rotation = random.NextDouble() * 360
                     };
                     // AbsoluteLayout.SetLayoutFlags(label, AbsoluteLayoutFlags.PositionProportional);
