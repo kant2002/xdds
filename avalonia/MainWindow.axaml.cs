@@ -54,9 +54,9 @@ namespace xdds
                 var brush = new ImmutableSolidColorBrush(color);
                 Dispatcher.UIThread.Post(() =>
                 {
-                    var label = new Label
+                    var label = new TextBlock
                     {
-                        Content = "XDD?",
+                        Text = "XDD?",
                         Foreground = brush,
                         //Rotation = random.NextDouble() * 360
                     };
