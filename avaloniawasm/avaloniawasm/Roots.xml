@@ -1,0 +1,5 @@
+﻿<linker>
+  <assembly fullname="avaloniawasm" preserve="All" />
+  <assembly fullname="Avalonia.Themes.Fluent" preserve="All" />
+  <assembly fullname="Avalonia.Themes.Simple" preserve="All" />
+</linker>
