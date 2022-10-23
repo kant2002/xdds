@@ -58,7 +58,6 @@ namespace xdds
                     {
                         Text = "XDD?",
                         Foreground = brush,
-                        //Rotation = random.NextDouble() * 360
                     };
                     // AbsoluteLayout.SetLayoutFlags(label, AbsoluteLayoutFlags.PositionProportional);
                     // Cannot find a way
