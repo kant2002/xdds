@@ -18,13 +18,13 @@ Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz   2.40 GHz
 <img src="docs/measurements.png" width="600" />
 
 ## UWP
-320 xdds per second
+343 xdds per second
 
 <img src="docs/uwp_measurements.png" width="600" />
 
 ## WPF
 
-480 xdds per second
+524 xdds per second
 
 <img src="docs/wpf_measurements.png" width="600" />
 
