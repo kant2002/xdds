@@ -26,6 +26,7 @@ namespace xddswpf
     {
         const int Max = 500;
         int count = 0;
+        int lastcount = 0;
         readonly System.Timers.Timer timer = new System.Timers.Timer(500);
         readonly Stopwatch stopwatch = new Stopwatch();
         private double width;
@@ -43,7 +44,7 @@ namespace xddswpf
         }
         void OnTimer(object sender, System.Timers.ElapsedEventArgs e)
         {
-            double avg = count / stopwatch.Elapsed.TotalSeconds;
+            double avg = (lastcount == 0 ? count : lastcount) / stopwatch.Elapsed.TotalSeconds;
             string text = "XDD/s: " + avg.ToString("0.00", CultureInfo.InvariantCulture);
             Dispatcher.Invoke(() => UpdateText(text));
         }
@@ -78,14 +79,16 @@ namespace xddswpf
                     if (absolute.Children.Count >= Max)
                         absolute.Children.RemoveAt(0);
                     absolute.Children.Add(label);
-                    Interlocked.Increment(ref count);
+                    count++;
                 });
                 //NOTE: plain Android we could put 1
-                Thread.Sleep(1);
+                if (count % 10 == 0)
+                    Thread.Sleep(1);
             }
 
             stopwatch.Stop();
             timer.Stop();
+            lastcount = count;
         }
     }
 }

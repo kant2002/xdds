@@ -14,7 +14,8 @@ namespace xdds
     public partial class MainWindow : Window
     {
         const int Max = 500;
-        int count = 0;
+        volatile int count = 0;
+        int lastcount = 0;
         readonly System.Timers.Timer timer = new System.Timers.Timer(500);
         readonly Stopwatch stopwatch = new Stopwatch();
         private double width;
@@ -27,9 +28,9 @@ namespace xdds
         }
         void OnTimer(object sender, System.Timers.ElapsedEventArgs e)
         {
-            double avg = count / stopwatch.Elapsed.TotalSeconds;
+            double avg = (lastcount == 0 ? count : lastcount) / stopwatch.Elapsed.TotalSeconds;
             string text = "XDD/s: " + avg.ToString("0.00", CultureInfo.InvariantCulture);
-            Dispatcher.UIThread.Post(() => UpdateText(text));
+            Dispatcher.UIThread.Post(() => UpdateText(text), DispatcherPriority.MaxValue);
         }
 
         void UpdateText(string text) => lols.Text = text;
@@ -74,13 +75,13 @@ namespace xdds
                     //absolute.Children.Add(label);
                     absolute.Children.Add(lt);
                     count++;
-                });
-                //NOTE: plain Android we could put 1
+                }, DispatcherPriority.Background);
                 Thread.Sleep(1);
             }
 
             stopwatch.Stop();
             timer.Stop();
+            lastcount = count;
         }
 
     }
