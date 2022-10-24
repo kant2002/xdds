@@ -75,7 +75,7 @@ namespace xdds
                     //absolute.Children.Add(label);
                     absolute.Children.Add(lt);
                     count++;
-                }, DispatcherPriority.Background);
+                });
                 Thread.Sleep(1);
             }
 
